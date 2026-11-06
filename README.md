@@ -14,8 +14,10 @@ mobsys/
 │   ├── cell_search_lab.ipynb                 the lab (Questions 1–22)
 │   └── nrlab.py                              small scat/tshark helpers used by the notebook
 ├── data/
-│   ├── cell_search.pcap                      NR cell search, Mouans-Sartoux, Galaxy S23 Ultra
-│   └── cell_search_051124.pcap               second capture, same place
+│   ├── cell_search.hdf                       raw Qualcomm trace (QXDM), NR cell search, Mouans-Sartoux, Galaxy S23 Ultra
+│   ├── cell_search.pcap                      the same trace converted by scat
+│   ├── cell_search_051124.hdf                second capture, same place
+│   └── cell_search_051124.pcap
 └── figures/
     ├── make_figures.py                       generates every figure (matplotlib)
     └── *.svg
@@ -88,8 +90,9 @@ cd mobsys/lab
 jupyter lab cell_search_lab.ipynb
 ```
 
-If you have the raw trace `cell_search.hdf` (Moodle), put it next to the notebook: it
-will be converted with scat. Otherwise the provided pcap is used.
+The notebook converts the raw trace `data/cell_search.hdf` with scat (into
+`lab/cell_search.pcap`); if scat is not installed it uses the provided
+`data/cell_search.pcap`, which is the same conversion.
 
 ## Handing in your work
 
@@ -122,7 +125,11 @@ scat -t sec -d my_trace.sdm -F my_trace.pcap       # Samsung (Shannon) SDM
 
 Only messages logged in clear by the modem can be decoded. Recent Qualcomm modems
 encrypt most diagnostic logs ("Secure DIAG"); for the traces of this lab, only the
-NR RRC MIB and SIB1 are readable by scat.
+NR RRC MIB and SIB1 are readable by scat. For example:
+
+```bash
+scat -t qc -d data/cell_search_051124.hdf -F /tmp/second.pcap
+```
 
 ## Instructors
 

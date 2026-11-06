@@ -1,7 +1,7 @@
 # Lab solutions: never publish
 lab/solutions/
 
-# Raw baseband traces (may contain device identifiers) and local pcaps
+# Local working copies of raw traces (the published ones are in data/) and local pcaps
 traces/
 lab/*.hdf
 lab/*.pcap
