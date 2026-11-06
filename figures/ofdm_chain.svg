@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="731.52pt" height="227.52pt" viewBox="0 0 731.52 227.52" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-06T11:22:18.585903</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 227.52 
+L 731.52 227.52 
+L 731.52 -0 
+L 0 -0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 97.92 135.36 
+L 194.4 135.36 
+Q 200.16 135.36 200.16 129.6 
+L 200.16 69.12 
+Q 200.16 63.36 194.4 63.36 
+L 97.92 63.36 
+Q 92.16 63.36 92.16 69.12 
+L 92.16 129.6 
+Q 92.16 135.36 97.92 135.36 
+z
+" clip-path="url(#pdd3ea204d8)" style="fill: #ededed; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #222222; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 231.12 135.36 
+L 327.6 135.36 
+Q 333.36 135.36 333.36 129.6 
+L 333.36 69.12 
+Q 333.36 63.36 327.6 63.36 
+L 231.12 63.36 
+Q 225.36 63.36 225.36 69.12 
+L 225.36 129.6 
+Q 225.36 135.36 231.12 135.36 
+z
+" clip-path="url(#pdd3ea204d8)" style="fill: #ceddeb; stroke: #222222; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 364.32 135.36 
+L 460.8 135.36 
+Q 466.56 135.36 466.56 129.6 
+L 466.56 69.12 
+Q 466.56 63.36 460.8 63.36 
+L 364.32 63.36 
+Q 358.56 63.36 358.56 69.12 
+L 358.56 129.6 
+Q 358.56 135.36 364.32 135.36 
+z
+" clip-path="url(#pdd3ea204d8)" style="fill: #ceddeb; stroke: #222222; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 497.52 135.36 
+L 594 135.36 
+Q 599.76 135.36 599.76 129.6 
+L 599.76 69.12 
+Q 599.76 63.36 594 63.36 
+L 497.52 63.36 
+Q 491.76 63.36 491.76 69.12 
+L 491.76 129.6 
+Q 491.76 135.36 497.52 135.36 
+z
+" clip-path="url(#pdd3ea204d8)" style="fill: #ceddeb; stroke: #222222; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(118.806094 89.659805)">Transform</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(118.760547 102.395313)">precoding</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(108.702422 115.13082)">(M-point DFT)</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #8a8a8a" x="146.16" y="149.018672" transform="rotate(-0 146.16 149.018672)">M = 12 × allocated RBs</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(250.8975 96.027559)">Subcarrier</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(255.143672 108.763066)">mapping</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #8a8a8a" transform="translate(240.636523 149.018672)">onto the allocated</text>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #8a8a8a" transform="translate(218.596953 158.536812)">subcarriers, zeros elsewhere</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(401.347734 96.027559)">IFFT</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(388.142578 108.763066)">(N-point)</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #8a8a8a" transform="translate(367.822773 149.018672)">N ≥ used subcarriers</text>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #8a8a8a" transform="translate(389.062148 158.536812)">(e.g. 4096)</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(538.603125 96.027559)">CP</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(521.700938 108.763066)">insertion</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #8a8a8a" transform="translate(495.390859 149.018672)">copy last N_CP samples</text>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #8a8a8a" transform="translate(521.709648 158.773219)">to the front</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'" transform="translate(12.96 96.662445)">modulation</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'" transform="translate(12.96 107.300367)">symbols</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'" transform="translate(639.36 91.343484)">to RF</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'" transform="translate(639.36 101.981406)">(DAC,</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'" transform="translate(639.36 112.619328)">up-conversion)</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #8a8a8a" x="146.16" y="54.288281" transform="rotate(-0 146.16 54.288281)">DFT-s-OFDM</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #8a8a8a" x="412.56" y="54.288281" transform="rotate(-0 412.56 54.288281)">CP-OFDM (DL and UL)</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="12.96" y="211.283438" transform="rotate(-0 12.96 211.283438)">* transform precoding only in UL (PUSCH), optional (enabled by transformPrecoder); without it the UL is CP-OFDM like the DL.</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 200.16 99.36 
+Q 212.76 99.36 224.018359 99.36 
+" style="fill: none; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 219.218359 96.96 
+L 224.018359 99.36 
+L 219.218359 101.76 
+z
+" style="fill: #222222; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 333.36 99.36 
+Q 345.96 99.36 357.218359 99.36 
+" style="fill: none; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 352.418359 96.96 
+L 357.218359 99.36 
+L 352.418359 101.76 
+z
+" style="fill: #222222; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 466.56 99.36 
+Q 479.16 99.36 490.418359 99.36 
+" style="fill: none; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 485.618359 96.96 
+L 490.418359 99.36 
+L 485.618359 101.76 
+z
+" style="fill: #222222; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 72.72 99.36 
+Q 82.44 99.36 90.818359 99.36 
+" style="fill: none; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 86.018359 96.96 
+L 90.818359 99.36 
+L 86.018359 101.76 
+z
+" style="fill: #222222; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 599.76 99.36 
+Q 617.76 99.36 634.418359 99.36 
+" style="fill: none; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 629.618359 96.96 
+L 634.418359 99.36 
+L 629.618359 101.76 
+z
+" style="fill: #222222; stroke: #222222; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pdd3ea204d8">
+   <rect x="5.76" y="5.76" width="720" height="216"/>
+  </clipPath>
+ </defs>
+</svg>

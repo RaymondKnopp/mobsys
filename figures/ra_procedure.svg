@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="731.52pt" height="501.12pt" viewBox="0 0 731.52 501.12" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-06T11:22:19.025838</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 501.12 
+L 731.52 501.12 
+L 731.52 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 120.96 480.96 
+L 120.96 41.76 
+" clip-path="url(#pa5b4e19fd6)" style="fill: none; stroke: #222222; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 624.96 480.96 
+L 624.96 41.76 
+" clip-path="url(#pa5b4e19fd6)" style="fill: none; stroke: #222222; stroke-linecap: square"/>
+   </g>
+   <g id="patch_2">
+    <path d="M 83.52 41.76 
+L 158.4 41.76 
+Q 164.16 41.76 164.16 36 
+L 164.16 15.12 
+Q 164.16 9.36 158.4 9.36 
+L 83.52 9.36 
+Q 77.76 9.36 77.76 15.12 
+L 77.76 36 
+Q 77.76 41.76 83.52 41.76 
+z
+" clip-path="url(#pa5b4e19fd6)" style="fill: #b4d5ae; stroke: #222222; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 587.52 41.76 
+L 662.4 41.76 
+Q 668.16 41.76 668.16 36 
+L 668.16 15.12 
+Q 668.16 9.36 662.4 9.36 
+L 587.52 9.36 
+Q 581.76 9.36 581.76 15.12 
+L 581.76 36 
+Q 581.76 41.76 587.52 41.76 
+z
+" clip-path="url(#pa5b4e19fd6)" style="fill: #9cbbd7; stroke: #222222; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 110.16 146.16 
+L 102.96 146.16 
+L 102.96 203.76 
+L 110.16 203.76 
+" clip-path="url(#pa5b4e19fd6)" style="fill: none; stroke: #c0392b; stroke-width: 1.3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 110.16 282.96 
+L 102.96 282.96 
+L 102.96 362.16 
+L 110.16 362.16 
+" clip-path="url(#pa5b4e19fd6)" style="fill: none; stroke: #c0392b; stroke-width: 1.3; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="120.96" y="28.595312" transform="rotate(-0 120.96 28.595312)">UE</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="624.96" y="28.509375" transform="rotate(-0 624.96 28.509375)">gNB</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="372.96" y="66.026406" transform="rotate(-0 372.96 66.026406)">SSB burst + SIB1 (RACH-ConfigCommon)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(44.227969 91.765406)">select best SSB</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(12.370781 101.843437)">(SS-RSRP) → preamble</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(36.233438 111.921469)">+ RACH occasion</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="372.96" y="116.426406" transform="rotate(-0 372.96 116.426406)">Msg1: PRACH preamble</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="372.96" y="146.518594" transform="rotate(-0 372.96 146.518594)">RACH occasion associated with the selected SSB; RA-RNTI derived from its time/frequency position</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="372.96" y="181.226406" transform="rotate(-0 372.96 181.226406)">Msg2: Random Access Response (RAR)</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(211.64625 211.318594)">PDCCH: DCI 1_0 with CRC scrambled by RA-RNTI  +  PDSCH (MAC RAR):</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(253.823906 222.330797)">RAPID, Timing Advance command, UL grant, TC-RNTI</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="372.96" y="260.426406" transform="rotate(-0 372.96 260.426406)">Msg3: PUSCH — RRCSetupRequest</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(192.38625 290.518594)">scheduled by the RAR UL grant, sent with the TA applied; carries the UE identity</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(262.382344 301.280484)">(retransmissions: DCI 0_0 scrambled by TC-RNTI)</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="372.96" y="339.626406" transform="rotate(-0 372.96 339.626406)">Msg4: PDCCH (TC-RNTI) + PDSCH</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="372.96" y="369.718594" transform="rotate(-0 372.96 369.718594)">UE Contention Resolution Identity MAC CE + RRCSetup</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="372.96" y="404.512344" transform="rotate(-0 372.96 404.512344)">HARQ-ACK on PUCCH</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #222222" x="372.96" y="434.518594" transform="rotate(-0 372.96 434.518594)">contention resolved → TC-RNTI becomes the C-RNTI</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #c0392b" transform="translate(38.265469 172.404422)">ra-Response-</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #c0392b" transform="translate(61.718906 182.482453)">Window</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #c0392b" transform="translate(31.986563 320.004422)">ra-Contention-</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #c0392b" transform="translate(24.454688 330.082453)">ResolutionTimer</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #8a8a8a" x="372.96" y="473.76" transform="rotate(-0 372.96 473.76)">4-step contention-based random access (TS 38.321 §5.1, TS 38.213 §8)</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 624.96 70.56 
+Q 372.96 75.96 122.971999 81.316886 
+" style="fill: none; stroke-dasharray: 6.66,2.88; stroke-dashoffset: 0; stroke: #8a8a8a; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 127.822314 83.613501 
+L 122.971999 81.316886 
+L 127.719481 78.814603 
+z
+" style="fill: #8a8a8a; stroke-dasharray: 6.66,2.88; stroke-dashoffset: 0; stroke: #8a8a8a; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 120.96 120.96 
+Q 372.96 128.16 622.94836 135.302525 
+" style="fill: none; stroke: #6aab5c; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 618.218861 132.766417 
+L 622.94836 135.302525 
+L 618.081774 137.564459 
+z
+" style="fill: #6aab5c; stroke: #6aab5c; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 624.96 185.76 
+Q 372.96 192.96 122.97164 200.102525 
+" style="fill: none; stroke: #3a76af; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 127.838226 202.364459 
+L 122.97164 200.102525 
+L 127.701139 197.566417 
+z
+" style="fill: #3a76af; stroke: #3a76af; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 120.96 264.96 
+Q 372.96 272.16 622.94836 279.302525 
+" style="fill: none; stroke: #6aab5c; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 618.218861 276.766417 
+L 622.94836 279.302525 
+L 618.081774 281.564459 
+z
+" style="fill: #6aab5c; stroke: #6aab5c; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 624.96 344.16 
+Q 372.96 351.36 122.97164 358.502525 
+" style="fill: none; stroke: #3a76af; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 127.838226 360.764459 
+L 122.97164 358.502525 
+L 127.701139 355.966417 
+z
+" style="fill: #3a76af; stroke: #3a76af; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 120.96 408.96 
+Q 372.96 416.16 622.94836 423.302525 
+" style="fill: none; stroke: #6aab5c; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 618.218861 420.766417 
+L 622.94836 423.302525 
+L 618.081774 425.564459 
+z
+" style="fill: #6aab5c; stroke: #6aab5c; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa5b4e19fd6">
+   <rect x="5.76" y="5.76" width="720" height="489.6"/>
+  </clipPath>
+ </defs>
+</svg>
