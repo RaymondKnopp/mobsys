@@ -311,7 +311,7 @@ $$P_{PRACH} = \min\left(P_{CMAX},\; P_{PRACH,target} + PL\right)\ \text{[dBm]}$$
   with $PL$ the path loss estimated on the SSB, and $P_{PRACH,target}$ = PREAMBLE_RECEIVED_TARGET_POWER from MAC (next slides)
 - The preamble is chosen using the index and transmitted
 - The UE waits to detect a PDCCH with the indicated RA-RNTI (a temporary identifier during the RA procedure, verified with the CRC mask) and delivers the associated PDSCH to MAC if decoding is successful – **Msg2** or Random Access Response (RAR)
-- $\text{RA-RNTI} = 1 + s_{id} + 14\,t_{id} + 14\cdot80\,f_{id} + 14\cdot80\cdot8\,ul\_carrier\_id$ (first symbol, slot, frequency occasion, carrier of the PRACH)
+- $\text{RA-RNTI} = 1 + s_{id} + 14\,t_{id} + 14\cdot80\,f_{id} + 14\cdot80\cdot8\,c_{id}$ (first symbol, slot, frequency occasion, and carrier of the PRACH: $c_{id}$ is `ul_carrier_id`, 0 = normal UL, 1 = SUL)
 
 ---
 
@@ -321,12 +321,13 @@ $$P_{PRACH} = \min\left(P_{CMAX},\; P_{PRACH,target} + PL\right)\ \text{[dBm]}$$
 TS 38.321 §5.1.4 (MAC) and TS 38.213 §7.4 (PHY):
 
 $$
-\text{PREAMBLE\_RECEIVED\_TARGET\_POWER} = \text{preambleReceivedTargetPower} + \Delta_{PREAMBLE} + (\text{COUNTER}-1)\cdot\text{powerRampingStep}
+P_{target} = \text{preambleReceivedTargetPower} + \Delta_{PREAMBLE} + (\text{COUNTER}-1)\cdot\text{powerRampingStep}
 $$
 
-$$P_{PRACH} = \min\left(P_{CMAX},\ \text{PREAMBLE\_RECEIVED\_TARGET\_POWER} + PL\right)$$
+$$P_{PRACH} = \min\left(P_{CMAX},\ P_{target} + PL\right)$$
 
-- COUNTER = PREAMBLE_POWER_RAMPING_COUNTER, starts at 1
+- $P_{target}$ is the MAC variable `PREAMBLE_RECEIVED_TARGET_POWER`
+- COUNTER = `PREAMBLE_POWER_RAMPING_COUNTER`, starts at 1
 - $\Delta_{PREAMBLE}$: format-dependent offset (TS 38.321 Table 7.3-1)
 - powerRampingStep ∈ {0, 2, 4, 6} dB; preambleReceivedTargetPower ∈ −202…−60 dBm (2 dB steps)
 

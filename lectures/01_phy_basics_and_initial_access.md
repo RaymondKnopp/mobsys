@@ -202,7 +202,7 @@ $$
 s_l^{(p,\mu)}(t) = \sum_{k=0}^{N_{grid}^{size,\mu}N_{sc}^{RB}-1} a_{k,l}^{(p,\mu)}\, e^{j2\pi\left(k + k_0^\mu - N_{grid}^{size,\mu}N_{sc}^{RB}/2\right)\Delta f\,\left(t - N_{CP,l}^{\mu}T_c - t_{start,l}^{\mu}\right)}
 $$
 
-for $t^{\mu}_{start,l} \le t < t^{\mu}_{start,l} + (N_u^\mu + N_{CP,l}^\mu)T_c$
+for $t_{start,l}^{\mu} \le t < t_{start,l}^{\mu} + (N_u^\mu + N_{CP,l}^\mu)T_c$
 
 - $a_{k,l}$: complex value of RE $(k,l)$; $N_{sc}^{RB}=12$
 - $k_0^\mu$: offset aligning grids of different numerologies (from offsetToCarrier)
