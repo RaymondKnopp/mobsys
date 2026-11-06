@@ -1254,6 +1254,108 @@ def ofdm_ifft_mapping():
 
 
 # --------------------------------------------------------------------------
+
+# --------------------------------------------------------------------------
+# 19-20. Scheduling timing: K0 / K1 (PDSCH, HARQ-ACK) and K2 (PUSCH)
+# --------------------------------------------------------------------------
+SCHED_X0, SCHED_SW = 9.0, 17.0      # first slot x, slot width (5 slots)
+SCHED_PAT = "DDDSU"
+
+
+def _sched_slots(ax, y, h=5.0, first=0):
+    """A row of 5 slots (TDD DDDSU, 30 kHz), labelled slot n+first ... ."""
+    u = SCHED_SW / 14
+    for i, s in enumerate(SCHED_PAT):
+        x = SCHED_X0 + i * SCHED_SW
+        if s == "D":
+            box(ax, x, y, SCHED_SW, h, fc=lighten(C["dl"], 0.85), lw=0.6)
+        elif s == "U":
+            box(ax, x, y, SCHED_SW, h, fc=lighten(C["ul"], 0.75), lw=0.6)
+        else:
+            box(ax, x, y, 10 * u, h, fc=lighten(C["dl"], 0.85), lw=0.6)
+            box(ax, x + 10 * u, y, 2 * u, h, fc=C["guard"], lw=0.6)
+            box(ax, x + 12 * u, y, 2 * u, h, fc=lighten(C["ul"], 0.75), lw=0.6)
+        box(ax, x, y, SCHED_SW, h, fc="none", lw=1.1, z=5)
+        k = i - first
+        lab = ("slot n" if k == 0 else f"n{k:+d}") + f"  ({s})"
+        ax.text(x + SCHED_SW / 2, y - 0.6, lab, ha="center", va="top",
+                fontsize=FS_S, color=INK if k == 0 else GREY)
+
+
+def _sx(slot, sym):
+    return SCHED_X0 + slot * SCHED_SW + sym * SCHED_SW / 14
+
+
+def _alloc(ax, y, slot, s0, s1, fc, text="", tc="white", h=5.0):
+    box(ax, _sx(slot, s0), y + 0.6, _sx(slot, s1) - _sx(slot, s0), h - 1.2,
+        text, fc=fc, tc=tc, fs=FS_S, lw=0.8, z=3)
+
+
+def _offset(ax, x0, x1, y, text, color=INK, hgt=4.0):
+    """Arc of fixed height above the slots from x0 to x1, with a label."""
+    s = np.linspace(0, 1, 60)
+    xs = x0 + (x1 - x0) * s
+    ys = y + hgt * np.sin(np.pi * s) ** 0.6
+    ax.plot(xs[:-3], ys[:-3], color=color, lw=1.3, zorder=6)
+    arrow(ax, xs[-4], ys[-4], x1, y, color=color, lw=1.3, ms=11, z=6)
+    ax.text((x0 + x1) / 2, y + hgt + 0.4, text, ha="center", va="bottom",
+            fontsize=FS_S + 0.5, color=color, weight="bold")
+
+
+def pdsch_timing():
+    fig, ax = canvas(10, 5.2)
+    rows = [(35.0, 0, 4, "(a) K0 = 0: PDSCH in the same slot as its PDCCH"),
+            (13.5, 1, 3, "(b) K0 = 1: PDSCH in a later slot")]
+    for y, k0, k1, title in rows:
+        ax.text(SCHED_X0, y + 13.5, title, fontsize=FS, weight="bold",
+                va="bottom")
+        _sched_slots(ax, y)
+        _alloc(ax, y, 0, 0, 2, C["pdcch"])
+        ax.text(_sx(0, 1), y - 2.4, "PDCCH\n(DCI 1_x)", ha="center", va="top",
+                fontsize=FS_S - 0.5, color=C["pdcch"])
+        _alloc(ax, y, k0, 2 if k0 == 0 else 0, 14, C["pdsch"], "PDSCH", tc=INK)
+        _alloc(ax, y, k0 + k1, 12, 14, C["accent"])
+        ax.text(_sx(k0 + k1, 13), y - 2.4, "HARQ-ACK\n(PUCCH)", ha="center",
+                va="top", fontsize=FS_S - 0.5, color=C["accent"])
+        top = y + 5.4
+        if k0 == 0:
+            _offset(ax, _sx(0, 1), _sx(0, 6), top, "K0 = 0", C["pdcch"])
+        else:
+            _offset(ax, _sx(0, 1), _sx(k0, 4), top, f"K0 = {k0}", C["pdcch"])
+        _offset(ax, _sx(k0, 10), _sx(k0 + k1, 13), top, f"K1 = {k1} slots",
+                C["accent"])
+    ax.text(SCHED_X0, 2.5,
+            "K0: from the time-domain row chosen by the DCI (pdsch-TimeDomainAllocationList, with mapping type and SLIV).\n"
+            "K1: PDSCH-to-HARQ_feedback timing indicator in the DCI (dl-DataToUL-ACK; {1…8} slots for DCI 1_0), "
+            "counted from the slot where the PDSCH ends.\n"
+            "In TDD the gNB picks K1 so that the ACK lands in an uplink slot/symbol.",
+            fontsize=FS_S - 0.5, color=GREY, va="center")
+    save(fig, "pdsch_timing")
+
+
+def pusch_timing():
+    fig, ax = canvas(10, 5.2)
+    rows = [(35.0, 2, 2, "(a) K2 = 2: DCI 0_x in the last full DL slot"),
+            (13.5, 0, 4, "(b) K2 = 4: DCI 0_x at the start of the pattern")]
+    for y, dci, k2, title in rows:
+        ax.text(SCHED_X0, y + 13.5, title, fontsize=FS, weight="bold",
+                va="bottom")
+        _sched_slots(ax, y, first=dci)
+        _alloc(ax, y, dci, 0, 2, C["pdcch"])
+        ax.text(_sx(dci, 1), y - 2.4, "PDCCH\n(DCI 0_x)", ha="center",
+                va="top", fontsize=FS_S - 0.5, color=C["pdcch"])
+        _alloc(ax, y, dci + k2, 0, 14, C["pusch"], "PUSCH")
+        _offset(ax, _sx(dci, 1), _sx(dci + k2, 4), y + 5.4, f"K2 = {k2} slots",
+                C["pusch"])
+    ax.text(SCHED_X0, 2.5,
+            "K2: from the time-domain row chosen by the DCI (pusch-TimeDomainAllocationList, with SLIV).\n"
+            "K2 = 0 (same slot) is allowed only if the PUSCH starts at least N2 symbols (UE processing time, TS 38.214 §6.4) "
+            "after the PDCCH: in practice FDD.\n"
+            "Msg3 (RAR grant) uses K2 + Δ (TS 38.214 Table 6.1.2.1.1-5).",
+            fontsize=FS_S - 0.5, color=GREY, va="center")
+    save(fig, "pusch_timing")
+
+
 def main():
     global PNG_DIR
     ap = argparse.ArgumentParser()
@@ -1266,7 +1368,7 @@ def main():
               ofdm_chain, ssb_structure, ssb_beams, coreset0_layout,
               ra_procedure, prach_tx, prach_rx, timing_advance, ulsch_chain,
               power_ramping, tdd_pattern, amc_loop, pdcch_candidates,
-              ofdm_ifft_mapping):
+              ofdm_ifft_mapping, pdsch_timing, pusch_timing):
         f()
         print("wrote", f.__name__ + ".svg")
 

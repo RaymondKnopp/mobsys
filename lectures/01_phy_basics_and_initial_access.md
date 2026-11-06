@@ -487,6 +487,30 @@ $$
 
 ---
 
+## Scheduling timing: K0, K1, K2
+<!-- NEW: review -->
+
+- A DCI does not always schedule its own slot: its *time domain resource assignment* field selects a row of a list configured by RRC (or of a default table in TS 38.214)
+- **K0**: slot offset from the PDCCH to the PDSCH it schedules (pdsch-TimeDomainAllocationList; the row also gives the mapping type and the SLIV)
+  - K0 = 0, PDSCH in the same slot, is the usual case; SIB1 uses default table A, where K0 is always 0
+- **K1**: slot offset from the end of the PDSCH to its HARQ-ACK on PUCCH (*PDSCH-to-HARQ_feedback timing indicator* in the DCI, values from dl-DataToUL-ACK, {1…8} for DCI 1_0)
+- **K2**: slot offset from the PDCCH (DCI 0_x) to the PUSCH (pusch-TimeDomainAllocationList); for Msg3 the UE adds Δ (Lecture 2)
+- In TDD the gNB picks K1 and K2 so that PUCCH/PUSCH fall into uplink slots or symbols: with DDDSU, all of them point to the U slot (or the UL symbols of S)
+
+---
+
+## Scheduling timing: PDSCH (K0) and HARQ-ACK (K1) — figure
+
+![h:540](../figures/pdsch_timing.svg)
+
+---
+
+## Scheduling timing: PUSCH (K2) — figure
+
+![h:540](../figures/pusch_timing.svg)
+
+---
+
 ## ServingCellConfigCommon
 
 - The main information element in SIB1. It defines
