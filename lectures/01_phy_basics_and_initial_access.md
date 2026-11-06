@@ -4,7 +4,20 @@ theme: default
 paginate: true
 math: katex
 footer: 'MobSys — EURECOM'
+style: |
+  section { font-size: 24px; padding: 40px 56px 50px 56px; align-content: start !important; }
+  section h1 { font-size: 44px; }
+  section h2 { font-size: 32px; margin: 0 0 0.35em 0; }
+  section h3 { font-size: 26px; }
+  section p, section li { margin: 0.12em 0; }
+  section ul ul, section ol ul { font-size: 0.95em; }
+  section table { font-size: 20px; margin: 0.3em 0; }
+  section .katex-display { margin: 0.35em 0; }
+  section img { display: block; margin: 0.4em auto 0 auto; }
+  section.lead { align-content: center !important; }
 ---
+
+<!-- _class: lead -->
 
 # Mobile Communication Systems (MobSys)
 
@@ -53,7 +66,11 @@ Raymond Knopp, EURECOM
 - The subframe (1 ms) is the same for all numerologies; the slot shrinks as the subcarrier spacing grows
 - Scheduling is done per slot (or per group of symbols inside a slot, "mini-slots")
 
-![w:800](../figures/frame_structure.svg)
+---
+
+## Frames, subframes, slots — figure
+
+![h:540](../figures/frame_structure.svg)
 
 ---
 
@@ -98,7 +115,11 @@ Numerology $\mu$: $\Delta f = 2^\mu \cdot 15$ kHz (TS 38.211 Table 4.2-1, Table 
 - **Physical Resource Blocks (PRB)**: numbered from 0 inside a bandwidth part: $n_{CRB} = n_{PRB} + N_{BWP}^{start}$
 - RB bandwidth: 180 kHz at 15 kHz, 360 kHz at 30 kHz, 1.44 MHz at 120 kHz
 
-![w:800](../figures/resource_grid.svg)
+---
+
+## Resource blocks — figure
+
+![h:540](../figures/resource_grid.svg)
 
 ---
 
@@ -128,7 +149,11 @@ Numerology $\mu$: $\Delta f = 2^\mu \cdot 15$ kHz (TS 38.211 Table 4.2-1, Table 
 - PRB counts from TS 38.101-1/-2 (maximum transmission bandwidth configuration)
 - Sampling rate = IDFT size × SCS, e.g. 4096 × 30 kHz = 122.88 Ms/s
 
-![w:700](../figures/channel_bandwidth.svg)
+---
+
+## Common PRB formats (2) — figure
+
+![h:540](../figures/channel_bandwidth.svg)
 
 ---
 
@@ -145,7 +170,11 @@ Numerology $\mu$: $\Delta f = 2^\mu \cdot 15$ kHz (TS 38.211 Table 4.2-1, Table 
 - Resource blocks in the grid are called Common Resource Blocks (CRB)
 - A BWP comprises a number of CRBs less than or equal to the total number of CRBs of the carrier
 
-![w:700](../figures/bwp.svg)
+---
+
+## Bandwidth parts — figure
+
+![h:540](../figures/bwp.svg)
 
 ---
 
@@ -157,7 +186,11 @@ Numerology $\mu$: $\Delta f = 2^\mu \cdot 15$ kHz (TS 38.211 Table 4.2-1, Table 
 - $N_{TA}$ compensates the round-trip propagation delay; it is first measured on the PRACH and then tracked by the gNB (details in Lecture 2)
 - $N_{TA,offset}$ is a fixed offset (TS 38.133), e.g. 25600 $T_c$ ≈ 13 µs in FR1 to leave room for the TDD DL→UL switch
 
-![w:800](../figures/timing_advance.svg)
+---
+
+## Timing Advance — figure
+
+![h:540](../figures/timing_advance.svg)
 
 ---
 
@@ -189,7 +222,11 @@ Numerology $\mu$: $\Delta f = 2^\mu \cdot 15$ kHz (TS 38.211 Table 4.2-1, Table 
   - This is UE-specific and even physical-channel specific (PUSCH only, single layer; some PUCCH formats use it by construction)
 - Chain: modulation symbols → (transform precoding) → RE mapping → IDFT → cyclic prefix insertion → upconversion
 
-![w:800](../figures/ofdm_chain.svg)
+---
+
+## Basic OFDM transmission — figure
+
+![w:1160](../figures/ofdm_chain.svg)
 
 ---
 
@@ -225,7 +262,11 @@ $$
 - $N_u^\mu T_c = 1/\Delta f$: the useful part is one period of the lowest subcarrier
 - $K$ is even, so subcarrier $K/2$ sits exactly on the carrier frequency: unlike LTE there is **no unused DC subcarrier** (the UE reports where its own DC is, `txDirectCurrentLocation`)
 
-![w:800](../figures/ofdm_ifft_mapping.svg)
+---
+
+## From the 3GPP formula to an IFFT — figure
+
+![h:540](../figures/ofdm_ifft_mapping.svg)
 
 ---
 
@@ -288,7 +329,11 @@ $$
 - Each SSB is mapped to a particular beam index (SSB index)
 - A UE will try to measure multiple SSBs
 
-![w:700](../figures/ssb_structure.svg)
+---
+
+## SSB allocations — figure
+
+![h:540](../figures/ssb_structure.svg)
 
 ---
 
@@ -297,7 +342,11 @@ $$
 - The gNodeB antenna sweeps its SSB beams in time: SSB index 0, 1, 2, … each in a different direction
 - The sweep is repeated every SSB period (e.g. 10 or 20 ms)
 
-![w:800](../figures/ssb_beams.svg)
+---
+
+## SSB beams and time multiplexing (1) — figure
+
+![h:540](../figures/ssb_beams.svg)
 
 ---
 
@@ -371,7 +420,11 @@ $$
     - the offset (in RBs) of the first PRB of CORESET0/PDSCH with respect to the SSB
   - **searchSpaceZero**: index into another table (TS 38.213 Tables 13-11…13-15) giving the time locations (slots/symbols) where to search for PDCCH0 in CORESET0
 
-![w:700](../figures/coreset0_layout.svg)
+---
+
+## Frequency raster definition: PDCCH0/SIB1 (2) — figure
+
+![h:540](../figures/coreset0_layout.svg)
 
 ---
 
@@ -399,7 +452,11 @@ $$
   - 1 candidate at aggregation level 16
   - REGs are numbered time-first, so every candidate spans both OFDM symbols
 
-![w:700](../figures/pdcch_candidates.svg)
+---
+
+## A bit on PDCCH (2) — figure
+
+![h:540](../figures/pdcch_candidates.svg)
 
 ---
 
@@ -458,11 +515,10 @@ $$
 ## Frequency raster definition: Point A (2)
 
 - In addition, the MIB parameter **ssb-SubcarrierOffset** provides $k_{SSB}$, described earlier: the offset of the SSB from the resource grid, in units of 15 kHz (FR1)
-- So with these parameters the UE can determine the starting frequency of the gNodeB transmissions:
+- So with these parameters the UE can determine the starting frequency of the gNodeB transmissions ($\Delta f_{ref}$ = 15 kHz in FR1):
 
 $$f_{SSB,\,first\,RE} = f_{PointA} + 12\cdot \text{offsetToPointA}\cdot \Delta f_{ref} + k_{SSB}\cdot \Delta f_{ref}$$
 
-  with $\Delta f_{ref}$ = 15 kHz (FR1)
 - Another key element is **scs-SpecificCarrierList**, which contains for each SCS the carrier bandwidth (carrierBandwidth, in RBs), the subcarrier spacing and offsetToCarrier (first usable CRB w.r.t. Point A)
 
 <!-- CHECK: the formula above is my rendering of the original figure (SSB / CRB N / CRB0 / PointA / offsetToPointA); valid for FR1 -->
@@ -483,4 +539,8 @@ $$
 - Until SIB1 is decoded, the initial DL BWP is the CORESET0 bandwidth
 - Example: $RIV = 275\cdot(51-1)+0 = 13750$ → 51 RBs starting at CRB $O_{carrier}$
 
-![w:700](../figures/bwp.svg)
+---
+
+## Initial Downlink/Uplink Bandwidth Part — figure
+
+![h:540](../figures/bwp.svg)

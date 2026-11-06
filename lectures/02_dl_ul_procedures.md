@@ -4,7 +4,20 @@ theme: default
 paginate: true
 math: katex
 footer: 'MobSys — EURECOM'
+style: |
+  section { font-size: 24px; padding: 40px 56px 50px 56px; align-content: start !important; }
+  section h1 { font-size: 44px; }
+  section h2 { font-size: 32px; margin: 0 0 0.35em 0; }
+  section h3 { font-size: 26px; }
+  section p, section li { margin: 0.12em 0; }
+  section ul ul, section ol ul { font-size: 0.95em; }
+  section table { font-size: 20px; margin: 0.3em 0; }
+  section .katex-display { margin: 0.35em 0; }
+  section img { display: block; margin: 0.4em auto 0 auto; }
+  section.lead { align-content: center !important; }
 ---
+
+<!-- _class: lead -->
 
 # Mobile Communication Systems (MobSys)
 
@@ -154,7 +167,11 @@ $$
 - The number of "guard" symbols is 14 − nrofDownlinkSymbols − nrofUplinkSymbols
 - Patterns are typically written like DDDSU (period of 5 slots, 3 DL slots, 1 mixed slot, 1 UL slot). "S" means "special", the old LTE (4G) terminology; in 5G these are called "mixed"
 
-![w:700](../figures/tdd_pattern.svg)
+---
+
+## TDD configuration — figure
+
+![h:540](../figures/tdd_pattern.svg)
 
 ---
 
@@ -180,7 +197,11 @@ $$
 - The UE receives the PRACH configuration and root sequences from SIB1 (rach-ConfigCommon), which allows it to generate the PRACH
 - Msg4 (contention resolution) on PDSCH, acknowledged on PUCCH
 
-![w:600](../figures/ra_procedure.svg)
+---
+
+## Random-access procedures (1) — figure
+
+![h:540](../figures/ra_procedure.svg)
 
 ---
 
@@ -245,7 +266,11 @@ TS 38.211 §6.3.3.1, Tables 6.3.3.1-1 and 6.3.3.1-2; Zadoff-Chu sequences
 - $N_{CS}$ from zeroCorrelationZoneConfig in rach-ConfigGeneric
 - Generation: Zadoff-Chu root sequence → cyclic shift → $L$-point DFT (frequency-domain transform of the ZC preamble sequence) → mapping and frequency shift according to msg1-FrequencyStart → $N$-point IDFT → CP
 
-![w:800](../figures/prach_tx.svg)
+---
+
+## PRACH transmitter — figure
+
+![h:540](../figures/prach_tx.svg)
 
 ---
 
@@ -259,7 +284,11 @@ TS 38.211 §6.3.3.1, Tables 6.3.3.1-1 and 6.3.3.1-2; Zadoff-Chu sequences
 - The time offset within the cyclic shift window is used to determine the timing advance for the UE
 - Tradeoff between the gNB PRACH detection procedure and the maximum cell radius ⇒ many cyclic shifts = short timing offset tolerance
 
-![w:800](../figures/prach_rx.svg)
+---
+
+## PRACH receiver (gNB, once per rootSequenceIndex) — figure
+
+![h:540](../figures/prach_rx.svg)
 
 ---
 
@@ -341,7 +370,11 @@ $$P_{PRACH} = \min\left(P_{CMAX},\ P_{target} + PL\right)$$
   - Each attempt: Msg1, then wait ra-ResponseWindow for the RAR
   - The counter is not incremented if the UE changes the selected SSB (beam) between attempts
 
-![w:800](../figures/power_ramping.svg)
+---
+
+## Power ramping (2) — figure
+
+![h:540](../figures/power_ramping.svg)
 
 ---
 
@@ -411,7 +444,11 @@ $$PL = \text{ss-PBCH-BlockPower} - \text{SS-RSRP (higher-layer filtered)}$$
 - The asynchronism is absorbed by the prefix at the gNB, as long as residual misalignment + delay spread < CP
   - e.g. at 30 kHz SCS the CP is ≈ 2.34 µs ↔ ≈ 350 m of distance: far too small without timing advance
 
-![w:800](../figures/timing_advance.svg)
+---
+
+## Need for timing advance — figure
+
+![h:540](../figures/timing_advance.svg)
 
 ---
 
@@ -464,7 +501,11 @@ $$PL = \text{ss-PBCH-BlockPower} - \text{SS-RSRP (higher-layer filtered)}$$
 - UCI is mapped first, close to the DMRS symbols; data is rate-matched around it (or punctured by ACK when ≤ 2 bits)
 - Then scrambling, modulation, (transform precoding), mapping
 
-![w:800](../figures/ulsch_chain.svg)
+---
+
+## ULSCH coding chain — figure
+
+![h:540](../figures/ulsch_chain.svg)
 
 ---
 
@@ -553,7 +594,11 @@ Formats (TS 38.211 §6.3.2, TS 38.213 §9)
 - All units in the UE receiver contribute to the CQI/RI/PMI determination
 - The gNB AMC algorithm combines CSI with HARQ ACK/NAK statistics (outer loop) to select the MCS, rank and precoder
 
-![w:800](../figures/amc_loop.svg)
+---
+
+## AMC — figure
+
+![h:540](../figures/amc_loop.svg)
 
 ---
 
