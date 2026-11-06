@@ -23,12 +23,24 @@ mobsys/
 
 ## Reading the lectures
 
-The lectures are Markdown files. GitHub renders them directly. To project them as
-slides, use [Marp](https://marp.app/): the *Marp for VS Code* extension, or
+The lectures are Markdown files. GitHub renders them directly. To get slides, use
+[Marp](https://marp.app/) (the *Marp for VS Code* extension, or its command line
+through `npx`, which needs Node.js). Write the HTML next to the Markdown so that
+the figures (`../figures/*.svg`) are found:
 
+```bash
+cd lectures
+# to present: one slide at a time, in a web browser
+npx @marp-team/marp-cli 01_phy_basics_and_initial_access.md --html -o 01.html
+# to read or scroll through (also works inside JupyterLab)
+npx @marp-team/marp-cli 01_phy_basics_and_initial_access.md --html --template bare -o 01_scroll.html
 ```
-npx @marp-team/marp-cli lectures/01_phy_basics_and_initial_access.md --html -o slides1.html
-```
+
+The default (presentation) HTML is driven by JavaScript: in a browser, use the arrow
+keys or click, `f` for full screen, `p` for the presenter view. **JupyterLab's HTML
+viewer blocks scripts**, so that version stays stuck on the first slide there; use the
+`--template bare` version (slides stacked vertically, no script), or click
+*Trust HTML* in the viewer's toolbar.
 
 To regenerate the figures after editing `figures/make_figures.py`:
 `cd figures && python3 make_figures.py`.

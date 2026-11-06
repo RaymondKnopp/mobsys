@@ -12,3 +12,6 @@ slides_orig/
 __pycache__/
 .ipynb_checkpoints/
 .venv/
+
+# Slides generated with Marp
+lectures/*.html
