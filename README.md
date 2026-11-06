@@ -42,9 +42,22 @@ Check out this repository and scat **next to each other**:
 mkdir mobsys-course && cd mobsys-course
 git clone https://github.com/RaymondKnopp/mobsys.git
 git clone -b mobsys https://github.com/RaymondKnopp/scat.git
-python3 -m venv .venv && . .venv/bin/activate
+python3 -m venv .venv && . .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -e ./scat jupyter pandas matplotlib
+scat -V                                           # should print "SCAT 2.1.2" (or later)
 ```
+
+* scat is pure Python: `pip install -e ./scat` installs it (and its dependencies)
+  from your checkout, nothing to compile. `-e` means that `git pull` in `scat/`
+  is enough to get later fixes, without reinstalling.
+* Install it **from this fork** (branch `mobsys`), not with `pip install signalcat`
+  from PyPI: the course needs changes that are not in the upstream release
+  (e.g. the UE RRC release shown with each NR RRC message, Question 2).
+* Always work inside the virtual environment (`. .venv/bin/activate` in every new
+  terminal). Recent Linux distributions refuse `pip install` outside one
+  ("externally-managed-environment").
+* Optional: `pip install -e "./scat[fastcrc]"` adds a faster CRC library; it needs a
+  C compiler and is not needed for the lab.
 
 **Wireshark plugin.** 5G NR messages from scat are encapsulated in GSMTAPv3, which
 Wireshark only decodes with the scat Lua plugin. Copy `scat/wireshark/scat.lua` into
