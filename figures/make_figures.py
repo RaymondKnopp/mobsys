@@ -1198,6 +1198,61 @@ def pdcch_candidates():
 
 
 # --------------------------------------------------------------------------
+# 18. From the resource grid to the IFFT input, and the cyclic prefix
+# --------------------------------------------------------------------------
+def ofdm_ifft_mapping():
+    fig, ax = canvas(10.5, 5.4)
+    neg, pos, zero = C["pdsch"], C["pdcch"], LIGHT
+    x0, W = 8, 92                           # common horizontal extent
+
+    # (1) resource grid of one symbol, K = N_grid * 12 subcarriers
+    y1 = 44
+    ax.text(x0, y1 + 6.5, "Resource grid of symbol $l$: $K = N_{grid}^{size}\\,N_{sc}^{RB}$ subcarriers, "
+            "$a_{k,l}$ for $k = 0 \\dots K-1$", fontsize=FS, va="bottom")
+    gx, gw = x0 + 18, 56
+    box(ax, gx, y1, gw / 2, 4, "$k < K/2$: below the carrier centre", fc=neg, fs=FS_S)
+    box(ax, gx + gw / 2, y1, gw / 2, 4, "$k \\geq K/2$: above the carrier centre", fc=pos, tc="white", fs=FS_S)
+    ax.text(gx - 1, y1 + 2, "frequency\n$(k - K/2)\\,\\Delta f$", ha="right", va="center", fontsize=FS_S)
+    vline(ax, gx + gw / 2, y1 - 1.5, y1 + 5.5, color=C["accent"], ls="-", lw=1.4)
+    ax.text(gx + gw / 2 + 1, y1 + 5.2, "DC (carrier centre, $f_0$)", ha="left", va="center",
+            fontsize=FS_S, color=C["accent"])
+
+    # (2) IFFT input bins m = 0 .. N-1
+    y2 = 25
+    ax.text(x0, y2 + 6.5, "IFFT input, $N$ bins ($N > K$, e.g. $N = 4096$):  bin $m = (k - K/2) \\mathrm{mod}\\ N$",
+            fontsize=FS, va="bottom")
+    bw = W - 10
+    bx = x0 + 6
+    seg = bw * 0.36
+    box(ax, bx, y2, seg, 4, "bins $0 \\dots K/2-1$", fc=pos, tc="white", fs=FS_S)
+    box(ax, bx + seg, y2, bw - 2 * seg, 4, "zeros: guard band / oversampling", fc=zero, fs=FS_S)
+    box(ax, bx + bw - seg, y2, seg, 4, "bins $N-K/2 \\dots N-1$", fc=neg, fs=FS_S)
+    ax.text(bx, y2 - 1, "0", ha="center", va="top", fontsize=FS_S)
+    ax.text(bx + bw, y2 - 1, "$N-1$", ha="center", va="top", fontsize=FS_S)
+    # crossing arrows: upper half -> low bins, lower half -> high bins
+    arrow(ax, gx + gw * 0.75, y1, bx + seg / 2, y2 + 4.2, color=pos)
+    arrow(ax, gx + gw * 0.25, y1, bx + bw - seg / 2, y2 + 4.2, color=neg)
+    ax.text(x0 + W - 1, (y1 + y2 + 4) / 2 + 1, "negative frequencies wrap\nto the top of the IFFT\n(\"fftshift\")",
+            ha="right", va="center", fontsize=FS_S, color=GREY)
+
+    # (3) time samples of the symbol: CP + N samples
+    y3 = 6
+    ax.text(x0, y3 + 6.5, "IFFT output at $f_s = N\\,\\Delta f$:  $N_{CP}$ + $N$ samples", fontsize=FS, va="bottom")
+    cpw, nw = 9, bw - 9
+    box(ax, bx, y3, cpw, 4, "CP", fc=lighten(C["ssb"], 0.3), fs=FS_S)
+    box(ax, bx + cpw, y3, nw - cpw, 4, "$s[n]$,  $n = 0 \\dots N-1$", fc="white", fs=FS_S)
+    box(ax, bx + nw, y3, cpw, 4, "", fc=lighten(C["ssb"], 0.3))
+    ax.text(bx + nw + cpw / 2, y3 + 2, "tail", ha="center", va="center", fontsize=FS_S)
+    ax.annotate("", xy=(bx + cpw / 2, y3 + 4.2), xytext=(bx + nw + cpw / 2, y3 + 4.2), zorder=4,
+                arrowprops=dict(arrowstyle="-|>", color=C["ssb"], lw=1.3, mutation_scale=12,
+                                connectionstyle="arc3,rad=0.25", shrinkA=0, shrinkB=0))
+    ax.text(bx + bw / 2, y3 - 1, "copy of the last $N_{CP}$ samples = the 3GPP formula evaluated for "
+            "$-N_{CP} \\leq n < 0$ (periodicity of $e^{j2\\pi mn/N}$)",
+            ha="center", va="top", fontsize=FS_S, color=GREY)
+    save(fig, "ofdm_ifft_mapping")
+
+
+# --------------------------------------------------------------------------
 def main():
     global PNG_DIR
     ap = argparse.ArgumentParser()
@@ -1209,7 +1264,8 @@ def main():
     for f in (frame_structure, resource_grid, channel_bandwidth, bwp,
               ofdm_chain, ssb_structure, ssb_beams, coreset0_layout,
               ra_procedure, prach_tx, prach_rx, timing_advance, ulsch_chain,
-              power_ramping, tdd_pattern, amc_loop, pdcch_candidates):
+              power_ramping, tdd_pattern, amc_loop, pdcch_candidates,
+              ofdm_ifft_mapping):
         f()
         print("wrote", f.__name__ + ".svg")
 

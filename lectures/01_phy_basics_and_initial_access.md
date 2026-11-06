@@ -211,6 +211,58 @@ for $t_{start,l}^{\mu} \le t < t_{start,l}^{\mu} + (N_u^\mu + N_{CP,l}^\mu)T_c$
 
 ---
 
+## From the 3GPP formula to an IFFT
+<!-- NEW: review -->
+
+38.211 describes an analog signal; a transmitter generates it digitally. Sample the useful part at $f_s = N\,\Delta f$ ($N$ = IFFT size, $N \ge K = N_{grid}^{size} N_{sc}^{RB}$), i.e. $t = t_{start,l} + N_{CP,l}T_c + n/f_s$, one numerology so $k_0 = 0$:
+
+$$
+s_l[n] = \sum_{k=0}^{K-1} a_{k,l}\; e^{\,j2\pi\,(k - K/2)\,n/N}, \qquad n = -N_{CP}, \dots, N-1
+$$
+
+- With bin $m = (k - K/2) \bmod N$ this is an **$N$-point IDFT** (up to a factor $N$): upper half of the grid → bins $0 \dots K/2-1$, lower half → bins $N-K/2 \dots N-1$, zeros in between (guard band + oversampling)
+- $e^{j2\pi mn/N}$ is $N$-periodic, so $n < 0$ gives back the **last $N_{CP}$ samples**: the CP is not added by hand, it is in the formula
+- $N_u^\mu T_c = 1/\Delta f$: the useful part is one period of the lowest subcarrier
+- $K$ is even, so subcarrier $K/2$ sits exactly on the carrier frequency: unlike LTE there is **no unused DC subcarrier** (the UE reports where its own DC is, `txDirectCurrentLocation`)
+
+![w:800](../figures/ofdm_ifft_mapping.svg)
+
+---
+
+## Worked example: Orange n78, 90 MHz at 30 kHz
+<!-- NEW: review -->
+
+- $K = 245 \times 12 = 2940$ subcarriers; smallest power of two above: $N = 4096$ → $f_s = 4096 \times 30\,\text{kHz} = 122.88$ Msps
+- At this rate one sample is $16\,T_c$ ($T_c = 1/1.96608\,\text{GHz}$):
+
+| | in $T_c$ (38.211 §5.3.1) | samples at 122.88 Msps |
+|---|---|---|
+| useful part $N_u^\mu = 2048\kappa\,2^{-\mu}$ | 65536 | 4096 |
+| normal CP $N_{CP,l}^\mu = 144\kappa\,2^{-\mu}$ | 4608 | 288 |
+| CP of symbols $l = 0$ and $l = 7\cdot2^\mu$ of each subframe: $+16\kappa$ | 5632 | 352 |
+
+- One slot: $14 \times 4096 + 13 \times 288 + 352 = 61440$ samples $= 0.5$ ms ✓
+- The longer CP every 0.5 ms keeps symbol boundaries aligned across numerologies
+- Any $N \ge K$ works if the CP stays an integer number of samples: e.g. $N = 3072$ → 92.16 Msps, CP 216 / 264 samples (a "3/4 sampling" used by some SDR implementations)
+
+---
+
+## Upconversion and per-symbol phase
+<!-- NEW: review -->
+
+TS 38.211 §5.4 defines the RF signal of symbol $l$ as
+
+$$
+\mathrm{Re}\left\{ s_l^{(p,\mu)}(t)\; e^{\,j2\pi f_0\,(t - t_{start,l}^{\mu} - N_{CP,l}^{\mu} T_c)} \right\}
+$$
+
+- The carrier phase **restarts at the start of the useful part of every symbol** instead of running continuously
+- A real transmitter has a continuous local oscillator, so each symbol must be pre-rotated in baseband by $e^{-j2\pi f_0 (t_{start,l} + N_{CP,l}T_c)}$, a per-symbol constant phase depending on $f_0$ and $l$, and the receiver removes the same rotation
+- If TX and RX disagree on it, every symbol gets a different constant phase error: invisible when each symbol has its own channel estimate, fatal as soon as a DMRS symbol is used to equalise the other symbols of the slot
+- Example: OAI computes the rotation of every symbol of a slot in `perform_symbol_rotation()` (`openair1/PHY/MODULATION/nr_modulation.c`) and applies it to the frequency-domain symbol, before the IFFT (TX) and after the FFT (RX): a constant phase per symbol commutes with the (I)FFT
+
+---
+
 ## Synchronization channels and PBCH block
 <!-- CHANGED: PSS carries N_ID^(2), SSS carries N_ID^(1); PCI = 3 N_ID^(1) + N_ID^(2) -->
 
