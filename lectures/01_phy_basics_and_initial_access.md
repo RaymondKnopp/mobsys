@@ -105,7 +105,7 @@ Numerology $\mu$: $\Delta f = 2^\mu \cdot 15$ kHz (TS 38.211 Table 4.2-1, Table 
 ## Common PRB formats (1)
 <!-- CHANGED: NR start symbol is 0..13 and length 1..14 with S+L<=14 (original said start 1..14, length 2..14) -->
 
-- PRBs are mapped onto contiguous OFDM/SC-FDMA symbols in the time domain, with starting symbol $S \in \{0,\dots,13\}$ and length $L \in \{1,\dots,14\}$, $S+L \le 14$ (the allowed values depend on the channel and mapping type)
+- PRBs are mapped onto contiguous OFDM/SC-FDMA symbols in the time domain, with starting symbol $S \in \lbrace 0,\dots,13\rbrace$ and length $L \in \lbrace 1,\dots,14\rbrace$, $S+L \le 14$ (the allowed values depend on the channel and mapping type)
 - PRBs can be aggregated across slots when using repetitions
 - Each PRB is 12 subcarriers of an OFDM symbol in the frequency domain
 - OFDM/SC-FDMA subcarriers in one symbol are termed "Resource Elements" (RE)
@@ -253,7 +253,7 @@ $$
 TS 38.211 §5.4 defines the RF signal of symbol $l$ as
 
 $$
-\mathrm{Re}\left\{ s_l^{(p,\mu)}(t)\; e^{\,j2\pi f_0\,(t - t_{start,l}^{\mu} - N_{CP,l}^{\mu} T_c)} \right\}
+\mathrm{Re}\left\lbrace s_l^{(p,\mu)}(t)\; e^{\,j2\pi f_0\,(t - t_{start,l}^{\mu} - N_{CP,l}^{\mu} T_c)} \right\rbrace
 $$
 
 - The carrier phase **restarts at the start of the useful part of every symbol** instead of running continuously
@@ -268,8 +268,8 @@ $$
 
 - Used in standalone and non-standalone; usually located inside the initial BWP
 - A UE finds the gNodeB by detecting the "synchronization" channels
-- **Primary synchronization signal (PSS)**: initial timing and frequency measurements, carries $N_{ID}^{(2)} \in \{0,1,2\}$
-- **Secondary synchronization signal (SSS)**: additional frequency measurements, carries $N_{ID}^{(1)} \in \{0,\dots,335\}$
+- **Primary synchronization signal (PSS)**: initial timing and frequency measurements, carries $N_{ID}^{(2)} \in \lbrace 0,1,2\rbrace$
+- **Secondary synchronization signal (SSS)**: additional frequency measurements, carries $N_{ID}^{(1)} \in \lbrace 0,\dots,335\rbrace$
   - Physical Cell Identifier $N_{ID}^{cell} = 3N_{ID}^{(1)} + N_{ID}^{(2)}$ (1008 PCIs)
 - Once timing/frequency/cell id are hypothesized, detection of the **PBCH** gives the first real System Information (MIB)
   - Standalone: a piece of the particular gNB configuration
@@ -381,7 +381,7 @@ $$
 - Once the possible PDCCH0 time and frequency locations are known, the UE searches the different combinations of time/frequency resources where the payload can be. This is beyond the scope of our course, but basically
   - It demodulates the OFDM symbols in the full set of PRBs that comprise CORESET0
   - It then looks in the OFDM symbols of the CORESET defined by the **SearchSpace**, which defines the frame/slot and symbols of the PDCCH and the possible "**Aggregation Levels**"
-- Aggregation level $L \in \{1,2,4,8,16\}$ = number of Control Channel Elements (CCE)
+- Aggregation level $L \in \lbrace 1,2,4,8,16\rbrace$ = number of Control Channel Elements (CCE)
   - 1 CCE = 6 REGs, 1 REG = 1 PRB × 1 OFDM symbol, so $72L$ REs (incl. DMRS)
   - The larger the aggregation, the more coded bits are used and the higher the protection of the PDCCH
   - The coded bits can also be interleaved in time/frequency (as in CORESET0) to increase frequency diversity, which enhances detectability (probability of detection, sensitivity)
