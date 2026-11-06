@@ -27,6 +27,7 @@ plt.rcParams.update({
     "font.family": "DejaVu Sans",
     "mathtext.fontset": "dejavusans",
     "svg.fonttype": "none",
+    "svg.hashsalt": "mobsys",      # stable element ids: regenerating gives identical files
     "figure.facecolor": "white",
     "savefig.facecolor": "white",
     "axes.facecolor": "white",
@@ -72,7 +73,7 @@ def canvas(w, h, y0=0.0):
 
 def save(fig, name):
     fig.savefig(os.path.join(OUT_DIR, name + ".svg"),
-                bbox_inches="tight", pad_inches=0.08)
+                bbox_inches="tight", pad_inches=0.08, metadata={"Date": None})
     if PNG_DIR:
         fig.savefig(os.path.join(PNG_DIR, name + ".png"), dpi=110,
                     bbox_inches="tight", pad_inches=0.08)

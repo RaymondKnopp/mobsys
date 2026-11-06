@@ -6,7 +6,6 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-06T11:22:19.826206</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -36,7 +35,7 @@ L 239.76 34.56
 L 16.56 34.56 
 L 16.56 387.36 
 z
-" clip-path="url(#pa28f5a6324)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #3a76af; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p5d01016a45)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #3a76af; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 491.76 387.36 
@@ -45,7 +44,7 @@ L 714.96 34.56
 L 491.76 34.56 
 L 491.76 387.36 
 z
-" clip-path="url(#pa28f5a6324)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #6aab5c; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p5d01016a45)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #6aab5c; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 40.32 351.36 
@@ -58,7 +57,7 @@ Q 34.56 257.76 34.56 263.52
 L 34.56 345.6 
 Q 34.56 351.36 40.32 351.36 
 z
-" clip-path="url(#pa28f5a6324)" style="fill: #c4d6e7; stroke: #222222; stroke-linejoin: miter"/>
+" clip-path="url(#p5d01016a45)" style="fill: #c4d6e7; stroke: #222222; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 40.32 185.76 
@@ -71,7 +70,7 @@ Q 34.56 106.56 34.56 112.32
 L 34.56 180 
 Q 34.56 185.76 40.32 185.76 
 z
-" clip-path="url(#pa28f5a6324)" style="fill: #c4d6e7; stroke: #222222; stroke-linejoin: miter"/>
+" clip-path="url(#p5d01016a45)" style="fill: #c4d6e7; stroke: #222222; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 277.92 185.76 
@@ -84,7 +83,7 @@ Q 272.16 106.56 272.16 112.32
 L 272.16 180 
 Q 272.16 185.76 277.92 185.76 
 z
-" clip-path="url(#pa28f5a6324)" style="fill: #ededed; stroke: #222222; stroke-linejoin: miter"/>
+" clip-path="url(#p5d01016a45)" style="fill: #ededed; stroke: #222222; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 515.52 200.16 
@@ -97,7 +96,7 @@ Q 509.76 92.16 509.76 97.92
 L 509.76 194.4 
 Q 509.76 200.16 515.52 200.16 
 z
-" clip-path="url(#pa28f5a6324)" style="fill: #c3ddbe; stroke: #222222; stroke-linejoin: miter"/>
+" clip-path="url(#p5d01016a45)" style="fill: #c3ddbe; stroke: #222222; stroke-linejoin: miter"/>
    </g>
    <g id="patch_8">
     <path d="M 515.52 351.36 
@@ -110,7 +109,7 @@ Q 509.76 272.16 509.76 277.92
 L 509.76 345.6 
 Q 509.76 351.36 515.52 351.36 
 z
-" clip-path="url(#pa28f5a6324)" style="fill: #c3ddbe; stroke: #222222; stroke-linejoin: miter"/>
+" clip-path="url(#p5d01016a45)" style="fill: #c3ddbe; stroke: #222222; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
     <path d="M 277.92 351.36 
@@ -123,7 +122,7 @@ Q 272.16 272.16 272.16 277.92
 L 272.16 345.6 
 Q 272.16 351.36 277.92 351.36 
 z
-" clip-path="url(#pa28f5a6324)" style="fill: #ededed; stroke: #222222; stroke-linejoin: miter"/>
+" clip-path="url(#p5d01016a45)" style="fill: #ededed; stroke: #222222; stroke-linejoin: miter"/>
    </g>
    <g id="text_1">
     <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #3a76af" x="27.36" y="53.632344" transform="rotate(-0 27.36 53.632344)">gNB</text>
@@ -236,7 +235,7 @@ z
 L 480.96 178.56 
 L 480.96 232.56 
 L 408.96 232.56 
-" clip-path="url(#pa28f5a6324)" style="fill: none; stroke: #c0392b; stroke-width: 1.2"/>
+" clip-path="url(#p5d01016a45)" style="fill: none; stroke: #c0392b; stroke-width: 1.2"/>
    </g>
    <g id="patch_15">
     <path d="M 408.96 232.56 
@@ -261,7 +260,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pa28f5a6324">
+  <clipPath id="p5d01016a45">
    <rect x="5.76" y="5.76" width="720" height="403.2"/>
   </clipPath>
  </defs>
