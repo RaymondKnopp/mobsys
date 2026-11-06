@@ -1,0 +1,14 @@
+# Lab solutions: never publish
+lab/solutions/
+
+# Raw baseband traces (may contain device identifiers) and local pcaps
+traces/
+lab/*.hdf
+lab/*.pcap
+
+# Original slide decks (contain copied 3GPP figures)
+slides_orig/
+
+__pycache__/
+.ipynb_checkpoints/
+.venv/

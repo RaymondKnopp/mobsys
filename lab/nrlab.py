@@ -14,13 +14,15 @@ from pathlib import Path
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
-REPO = HERE.parent.parent
+REPO = HERE.parent                       # the mobsys repository
+SCAT_REPO = REPO.parent / 'scat'         # scat checked out next to it
 
 
 def find_scat_lua() -> Path:
-    """Locate the scat Wireshark plugin (needed to dissect GSMTAPv3 / NR RRC)."""
+    """Locate the scat Wireshark plugin (needed to dissect GSMTAPv3 / NR RRC):
+    $SCAT_LUA, then ../scat/wireshark/scat.lua, then the personal plugin folders."""
     candidates = [os.environ.get('SCAT_LUA', ''),
-                  REPO / 'wireshark' / 'scat.lua',
+                  SCAT_REPO / 'wireshark' / 'scat.lua',
                   Path.home() / '.local/lib/wireshark/plugins/scat.lua',
                   Path.home() / '.config/wireshark/plugins/scat.lua']
     for c in candidates:

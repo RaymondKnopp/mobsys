@@ -2,12 +2,13 @@
 
 Lecture notes and a hands-on lab for the EURECOM *Mobile Communication Systems*
 course. The lab uses real 5G traces captured with a commercial phone and converted
-to pcap with **scat** (this repository).
+to pcap with [**scat**](https://github.com/RaymondKnopp/scat) (our fork of
+[fgsect/scat](https://github.com/fgsect/scat), branch `mobsys`).
 
 ```
-mobsys_lab/
+mobsys/
 ├── lectures/
-│   ├── 01_phy_basics_and_initial_access.md   numerology, grid, BWP, SSB, PBCH, SI, PDCCH, SIB1
+│   ├── 01_phy_basics_and_initial_access.md   numerology, grid, OFDM, BWP, SSB, PBCH, SI, PDCCH, SIB1
 │   └── 02_dl_ul_procedures.md                PDSCH, HARQ, PRACH/RA, TA, PUSCH, PUCCH, CSI, TDD
 ├── lab/
 │   ├── cell_search_lab.ipynb                 the lab (Questions 1–22)
@@ -35,20 +36,22 @@ To regenerate the figures after editing `figures/make_figures.py`:
 ## Setting up for the lab
 
 You need Python ≥ 3.10, Wireshark (≥ 4.2; ≥ 4.4 recommended) with `tshark`, and Jupyter.
+Check out this repository and scat **next to each other**:
 
 ```bash
-git clone https://github.com/RaymondKnopp/scat.git
-cd scat
+mkdir mobsys-course && cd mobsys-course
+git clone https://github.com/RaymondKnopp/mobsys.git
+git clone -b mobsys https://github.com/RaymondKnopp/scat.git
 python3 -m venv .venv && . .venv/bin/activate
-pip install -e . jupyter pandas matplotlib
+pip install -e ./scat jupyter pandas matplotlib
 ```
 
 **Wireshark plugin.** 5G NR messages from scat are encapsulated in GSMTAPv3, which
-Wireshark only decodes with the scat Lua plugin. Copy `wireshark/scat.lua` into your
-personal Wireshark plugin folder (*Help → About Wireshark → Folders → Personal Lua
-Plugins*, typically `~/.local/lib/wireshark/plugins/` on Linux,
-`%APPDATA%\Wireshark\plugins\` on Windows) and restart Wireshark. The notebook loads
-the plugin from the repository by itself.
+Wireshark only decodes with the scat Lua plugin. Copy `scat/wireshark/scat.lua` into
+your personal Wireshark plugin folder (*Help → About Wireshark → Folders → Personal
+Lua Plugins*, typically `~/.local/lib/wireshark/plugins/` on Linux,
+`%APPDATA%\Wireshark\plugins\` on Windows) and restart Wireshark. The notebook finds
+the plugin in `../scat` by itself (or set `SCAT_LUA` to its path).
 
 Wireshark < 4.4 prints *"Cannot find dissector nr-rrc.sibN"* when loading the
 plugin: harmless for this lab.
@@ -56,7 +59,7 @@ plugin: harmless for this lab.
 Then:
 
 ```bash
-cd mobsys_lab/lab
+cd mobsys/lab
 jupyter lab cell_search_lab.ipynb
 ```
 
@@ -71,18 +74,17 @@ Answer the questions directly in `cell_search_lab.ipynb` (code cells and the
 **Don't use GitHub's *Fork* button:** a fork of a public repository is always
 public, so your answers would be visible to everyone. Make a private copy instead:
 
-1. On GitHub, create a new **private** repository, e.g. `mobsys-lab-<yourname>`,
+1. On GitHub, create a new **private** repository, e.g. `mobsys-<yourname>`,
    without a README.
-2. Clone this course repository and point it at your private repository:
+2. Point your clone of this repository at it:
    ```bash
-   git clone -b mobsys-lab https://github.com/RaymondKnopp/scat.git mobsys-lab
-   cd mobsys-lab
+   cd mobsys
    git remote rename origin course
-   git remote add origin https://github.com/<you>/mobsys-lab-<yourname>.git
-   git push -u origin mobsys-lab
+   git remote add origin https://github.com/<you>/mobsys-<yourname>.git
+   git push -u origin main
    ```
 3. Work, commit and push to `origin` as usual. To get later updates of the course
-   material: `git pull course mobsys-lab`.
+   material: `git pull course main`.
 4. In your repository, go to *Settings → Collaborators* and add the instructor's
    GitHub account (given in class) before the deadline.
 
