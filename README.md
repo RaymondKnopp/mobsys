@@ -69,7 +69,8 @@ scat -V                                           # should print "SCAT 2.1.2" (o
   (e.g. the UE RRC release shown with each NR RRC message, Question 2).
 * Always work inside the virtual environment (`. .venv/bin/activate` in every new
   terminal). Recent Linux distributions refuse `pip install` outside one
-  ("externally-managed-environment").
+  ("externally-managed-environment"). On EURECOM's JupyterHub, see
+  [below](#on-eurecoms-jupyterhub).
 * Optional: `pip install -e "./scat[fastcrc]"` adds a faster CRC library; it needs a
   C compiler and is not needed for the lab.
 
@@ -77,7 +78,8 @@ scat -V                                           # should print "SCAT 2.1.2" (o
 Wireshark only decodes with the scat Lua plugin. Copy `scat/wireshark/scat.lua` into
 your personal Wireshark plugin folder (*Help → About Wireshark → Folders → Personal
 Lua Plugins*, typically `~/.local/lib/wireshark/plugins/` on Linux,
-`%APPDATA%\Wireshark\plugins\` on Windows) and restart Wireshark. The notebook finds
+`%APPDATA%\Wireshark\plugins\` on Windows; create the `plugins` folder if it does
+not exist) and restart Wireshark. The notebook finds
 the plugin in `../scat` by itself (or set `SCAT_LUA` to its path).
 
 Wireshark < 4.4 prints *"Cannot find dissector nr-rrc.sibN"* when loading the
@@ -92,7 +94,31 @@ jupyter lab cell_search_lab.ipynb
 
 The notebook converts the raw trace `data/cell_search.hdf` with scat (into
 `lab/cell_search.pcap`); if scat is not installed it uses the provided
-`data/cell_search.pcap`, which is the same conversion.
+`data/cell_search.pcap`, which is the same conversion. The notebook runs scat
+with its own Python (`python -m scat`), so it finds scat even if the `scat`
+command is not in your PATH.
+
+### On EURECOM's JupyterHub
+
+Open a terminal in JupyterHub (*File → New → Terminal*) and install everything
+for your user, without a virtual environment:
+
+```bash
+mkdir mobsys-course && cd mobsys-course
+git clone https://github.com/RaymondKnopp/mobsys.git
+git clone -b mobsys https://github.com/RaymondKnopp/scat.git
+pip install --user -e ./scat pandas matplotlib
+python -m scat -V                                 # should print "SCAT 2.1.2" (or later)
+```
+
+* pip puts the `scat` command in `~/.local/bin`, which is often not in PATH there
+  (*"scat: command not found"*). The notebook does not need it. To use `scat` in
+  the terminal, add `export PATH="$HOME/.local/bin:$PATH"` to `~/.bashrc` and open
+  a new terminal, or just type `python -m scat` instead of `scat`.
+* After installing, restart the notebook kernel (*Kernel → Restart Kernel*) so that
+  it sees the new packages.
+* `tshark` must be installed on the hub. Check with `tshark --version` in the
+  terminal; if it is missing, tell the instructor.
 
 ## Handing in your work
 

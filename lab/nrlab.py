@@ -5,10 +5,12 @@ protocol questions. Everything 3GPP-related (ARFCN, RIV, SLIV, CORESET#0...)
 is left to you to compute in the notebook.
 """
 
+import importlib.util
 import json
 import os
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -31,22 +33,37 @@ def find_scat_lua() -> Path:
     raise FileNotFoundError('scat.lua not found: set the SCAT_LUA environment variable')
 
 
+def scat_command() -> list[str] | None:
+    """How to run scat: with this notebook's own Python (`python -m scat`) if scat
+    is installed there, so that it works even when the `scat` launcher is not in
+    PATH (pip --user installs, JupyterHub); otherwise the `scat` found in PATH."""
+    if importlib.util.find_spec('scat') is not None:
+        return [sys.executable, '-m', 'scat']
+    path = shutil.which('scat')
+    return [path] if path else None
+
+
 def check_tools() -> None:
     """Print the versions of the tools used in the lab."""
-    for tool, arg in (('scat', '-V'), ('tshark', '--version')):
-        path = shutil.which(tool)
-        if path is None:
-            print(f'{tool:7s}: NOT FOUND in PATH')
+    for tool, cmd in (('scat', scat_command()), ('tshark', [shutil.which('tshark')])):
+        if not cmd or not cmd[0]:
+            print(f'{tool:7s}: NOT FOUND (scat: pip install -e ../../scat; tshark: install Wireshark)')
             continue
-        out = subprocess.run([tool, arg], capture_output=True, text=True).stdout.splitlines()
-        print(f'{tool:7s}: {out[0] if out else "?"} ({path})')
+        res = subprocess.run(cmd + (['-V'] if tool == 'scat' else ['--version']),
+                             capture_output=True, text=True)
+        out = (res.stdout or res.stderr).strip().splitlines()
+        print(f'{tool:7s}: {out[0] if res.returncode == 0 and out else "FAILS: " + (out[-1] if out else "?")}'
+              f' ({" ".join(cmd)})')
     print(f'scat.lua: {find_scat_lua()}')
 
 
 def run_scat(dump: str | Path, pcap: str | Path) -> Path:
     """Convert a Qualcomm baseband dump (.qmdl/.dlf/.hdf) into a pcap with scat."""
+    cmd = scat_command()
+    if cmd is None:
+        raise FileNotFoundError('scat is not installed for this Python: pip install -e ../../scat')
     pcap = Path(pcap)
-    subprocess.run(['scat', '-t', 'qc', '-d', str(dump), '-F', str(pcap)],
+    subprocess.run(cmd + ['-t', 'qc', '-d', str(dump), '-F', str(pcap)],
                    check=True, stdout=subprocess.DEVNULL)
     return pcap
 
